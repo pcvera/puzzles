@@ -28,6 +28,9 @@ lerna-debug.log*
 .env*.local
 .env
 
+# Local pnpm config overrides
+.npmrc.local
+
 # Vercel
 .vercel
 
