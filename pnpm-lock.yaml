@@ -113,6 +113,18 @@ importers:
         specifier: ^11.0.0
         version: 11.0.1(postcss@8.5.6)(tsx@4.21.0)
 
+  packages/hexagonal-grids:
+    devDependencies:
+      '@pcvera-puzzles/postcss-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/postcss-config
+      postcss:
+        specifier: ^8.4.0
+        version: 8.5.6
+      postcss-cli:
+        specifier: ^11.0.0
+        version: 11.0.1(postcss@8.5.6)(tsx@4.21.0)
+
   packages/sample-package:
     devDependencies:
       '@pcvera-puzzles/eslint-config':
@@ -127,18 +139,6 @@ importers:
       vitest:
         specifier: ^2.0.0
         version: 2.1.9(@types/node@20.19.33)
-
-  packages/testing-2:
-    devDependencies:
-      '@pcvera-puzzles/postcss-config':
-        specifier: workspace:*
-        version: link:../../infrastructure/postcss-config
-      postcss:
-        specifier: ^8.4.0
-        version: 8.5.6
-      postcss-cli:
-        specifier: ^11.0.0
-        version: 11.0.1(postcss@8.5.6)(tsx@4.21.0)
 
 packages:
 

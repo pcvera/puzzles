@@ -1,0 +1,25 @@
+.offset-grid .placed-hex {
+  position: absolute;
+  --x-offset: calc(
+    ((var(--q) - var(--q-origin)) - 0.5 * var(--parity)) *
+      (var(--hex-width) + var(--gap))
+  );
+  --y-offset: calc(
+    (var(--r) - var(--r-origin)) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.offset-grid {
+  --hex-width: calc(var(--hex-size) / 1.1547);
+  width: calc(
+    (var(--max-q) - var(--min-q) + 1.25) * (var(--hex-width) + var(--gap))
+  );
+  height: calc(
+    (var(--max-r) - var(--min-r) + 1.25) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  --q-origin: var(--min-q);
+  --r-origin: var(--min-r);
+}
