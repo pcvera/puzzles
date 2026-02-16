@@ -1,7 +1,7 @@
 {
   "extends": "@pcvera-puzzles/typescript-config",
   "compilerOptions": {
-    "outDir": "../../dist/apps/sample-app",
+    "outDir": "./dist",
     "rootDir": ".",
     "lib": ["ES2020", "DOM"]
   },
