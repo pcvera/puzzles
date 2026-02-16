@@ -128,6 +128,21 @@ importers:
         specifier: ^2.0.0
         version: 2.1.9(@types/node@20.19.33)
 
+  packages/testing-generator:
+    devDependencies:
+      '@pcvera-puzzles/eslint-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/eslint-config
+      '@pcvera-puzzles/vite-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/vite-config
+      '@pcvera-puzzles/vitest-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/vitest-config
+      vitest:
+        specifier: ^2.0.0
+        version: 2.1.9(@types/node@20.19.33)
+
 packages:
 
   '@babel/helper-string-parser@7.27.1':

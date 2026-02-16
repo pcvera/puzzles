@@ -1,0 +1,20 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import { createLibraryConfig } from '@pcvera-puzzles/vite-config';
+
+export default defineConfig(
+  createLibraryConfig({
+    build: {
+      lib: {
+        entry: resolve(__dirname, 'src/main.ts'),
+        name: '{{pascalCase packageName}}',
+        fileName: () => 'main.js',
+      },
+      rollupOptions: {
+        external: [],
+      },
+    },
+    // Opt out of dts plugin by providing an empty plugins array
+    plugins: [],
+  })
+);
