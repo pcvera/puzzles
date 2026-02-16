@@ -10,8 +10,12 @@
     "dev": "tsx watch src/main.ts",
     "clean": "rm -rf dist"
   },
+  "dependencies": {
+    "@pcvera-puzzles/sample-package": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@pcvera-puzzles/typescript-config": "workspace:*",
     "@pcvera-puzzles/vite-config": "workspace:*"
   }
 }

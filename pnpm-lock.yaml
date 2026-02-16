@@ -28,7 +28,14 @@ importers:
         version: 3.9.1(@types/node@20.19.33)(rollup@4.57.1)(typescript@5.9.3)(vite@5.4.21(@types/node@20.19.33))
 
   apps/sample-app:
+    dependencies:
+      '@pcvera-puzzles/sample-package':
+        specifier: workspace:*
+        version: link:../../packages/sample-package
     devDependencies:
+      '@pcvera-puzzles/typescript-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/typescript-config
       '@pcvera-puzzles/vite-config':
         specifier: workspace:*
         version: link:../../infrastructure/vite-config
@@ -43,6 +50,13 @@ importers:
       vite:
         specifier: ^5.0.0
         version: 5.4.21(@types/node@20.19.33)
+      vite-plugin-dts:
+        specifier: ^3.0.0
+        version: 3.9.1(@types/node@20.19.33)(rollup@4.57.1)(typescript@5.9.3)(vite@5.4.21(@types/node@20.19.33))
+    devDependencies:
+      typescript:
+        specifier: ^5.3.0
+        version: 5.9.3
 
   packages/sample-package:
     devDependencies:
