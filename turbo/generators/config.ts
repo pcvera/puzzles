@@ -41,11 +41,18 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "list",
         name: "template",
-        message: "Use TypeScript library boilerplate or empty package?",
-        choices: [
-          { name: "TypeScript library boilerplate", value: "ts-library" },
-          { name: "Empty package", value: "empty" },
-        ],
+        message: "What template should be used?",
+        choices: (answers) => {
+          const choices = [
+            { name: "TypeScript library boilerplate", value: "ts-library" },
+            { name: "Empty package", value: "empty" },
+          ];
+          // Only show CSS library option for packages
+          if (answers?.packageType === "package") {
+            choices.splice(1, 0, { name: "CSS library", value: "css-library" });
+          }
+          return choices;
+        },
       },
     ],
     actions: (data) => {
@@ -67,6 +74,25 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           path: `${basePath}/package.json`,
           templateFile: `templates/${packageType}/empty/package.json.hbs`,
         });
+      } else if (template === "css-library" && packageType === "package") {
+        // CSS library boilerplate
+        actions.push(
+          {
+            type: "add",
+            path: `${basePath}/package.json`,
+            templateFile: "templates/package/css-library/package.json.hbs",
+          },
+          {
+            type: "add",
+            path: `${basePath}/postcss.config.js`,
+            templateFile: "templates/package/css-library/postcss.config.js.hbs",
+          },
+          {
+            type: "add",
+            path: `${basePath}/src/main.css`,
+            templateFile: "templates/package/css-library/src/main.css.hbs",
+          }
+        );
       } else {
         // TypeScript library boilerplate
         if (packageType === "infrastructure") {

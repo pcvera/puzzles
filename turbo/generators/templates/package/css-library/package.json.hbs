@@ -1,0 +1,21 @@
+{
+  "name": "@pcvera-puzzles/{{packageName}}",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./main.css": "./dist/main.css"
+  },
+  "scripts": {
+    "build": "postcss src/main.css -o dist/main.css",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@pcvera-puzzles/postcss-config": "workspace:*",
+    "postcss": "^8.4.0",
+    "postcss-cli": "^11.0.0"
+  }
+}
