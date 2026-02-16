@@ -15,11 +15,19 @@
   },
   "scripts": {
     "build": "postcss src/hexagon.css -o dist/hexagon.css && postcss src/axial-grid.css -o dist/axial-grid.css && postcss src/offset-grid.css -o dist/offset-grid.css && postcss src/cube-grid.css -o dist/cube-grid.css && postcss src/doubled-grid.css -o dist/doubled-grid.css",
-    "clean": "rm -rf dist"
+    "dev": "storybook dev -p 6006",
+    "clean": "rm -rf dist",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@pcvera-puzzles/postcss-config": "workspace:*",
     "postcss": "^8.4.0",
-    "postcss-cli": "^11.0.0"
+    "postcss-cli": "^11.0.0",
+    "storybook": "^10.2.8",
+    "@storybook/html-vite": "^10.2.8",
+    "@chromatic-com/storybook": "^5.0.1",
+    "@storybook/addon-a11y": "^10.2.8",
+    "@storybook/addon-docs": "^10.2.8"
   }
 }

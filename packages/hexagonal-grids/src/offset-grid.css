@@ -1,5 +1,8 @@
 .offset-grid .placed-hex {
   position: absolute;
+  /* Calculate parity from --r: mod(r, 2) = r - 2 * round(r / 2) */
+  /* For integers, this gives 0 for even rows, 1 for odd rows */
+  --parity: calc(var(--r) - 2 * round(var(--r) / 2));
   --x-offset: calc(
     ((var(--q) - var(--q-origin)) - 0.5 * var(--parity)) *
       (var(--hex-width) + var(--gap))
