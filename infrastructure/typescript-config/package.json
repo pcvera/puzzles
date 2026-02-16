@@ -1,5 +1,5 @@
 {
-  "name": "@infrastructure/typescript-config",
+  "name": "@pcvera-puzzles/typescript-config",
   "version": "0.0.0",
   "private": true,
   "main": "./tsconfig.json",

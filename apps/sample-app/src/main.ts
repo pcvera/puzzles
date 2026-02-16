@@ -1,4 +1,4 @@
-import { greet, add, Calculator } from '@puzzles/sample-package';
+import { greet, add, Calculator } from '@pcvera-puzzles/sample-package';
 
 console.log('=== Sample App ===\n');
 

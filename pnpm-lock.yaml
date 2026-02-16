@@ -29,13 +29,26 @@ importers:
 
   apps/sample-app:
     devDependencies:
+      '@pcvera-puzzles/vite-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/vite-config
       '@types/node':
         specifier: ^20.0.0
         version: 20.19.33
 
   infrastructure/typescript-config: {}
 
-  packages/sample-package: {}
+  infrastructure/vite-config:
+    dependencies:
+      vite:
+        specifier: ^5.0.0
+        version: 5.4.21(@types/node@20.19.33)
+
+  packages/sample-package:
+    devDependencies:
+      '@pcvera-puzzles/vite-config':
+        specifier: workspace:*
+        version: link:../../infrastructure/vite-config
 
 packages:
 

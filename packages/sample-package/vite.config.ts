@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
+import dts from 'vite-plugin-dts';
+import { createViteConfig } from '@pcvera-puzzles/vite-config';
 
-export default defineConfig({
+export default createViteConfig({
   plugins: [
     dts({
       insertTypesEntry: true,
@@ -16,7 +16,6 @@ export default defineConfig({
       fileName: () => 'index.js',
     },
     outDir: 'dist',
-    sourcemap: true,
     rollupOptions: {
       external: [],
     },

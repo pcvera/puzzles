@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { createViteConfig } from '@pcvera-puzzles/vite-config';
 
-export default defineConfig({
+export default createViteConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
@@ -10,9 +10,8 @@ export default defineConfig({
       fileName: () => 'main.js',
     },
     outDir: 'dist',
-    sourcemap: true,
     rollupOptions: {
-      external: ['@puzzles/sample-package'],
+      external: ['@pcvera-puzzles/sample-package'],
     },
   },
 });

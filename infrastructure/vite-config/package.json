@@ -1,6 +1,7 @@
 {
-  "name": "@pcvera-puzzles/sample-package",
-  "version": "0.1.0",
+  "name": "@pcvera-puzzles/vite-config",
+  "version": "0.0.0",
+  "private": true,
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,11 +11,17 @@
       "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "vite build",
+    "build": "tsc",
     "clean": "rm -rf dist"
   },
+  "dependencies": {
+    "vite": "^5.0.0"
+  },
   "devDependencies": {
-    "@pcvera-puzzles/vite-config": "workspace:*"
+    "typescript": "^5.3.0"
   }
 }

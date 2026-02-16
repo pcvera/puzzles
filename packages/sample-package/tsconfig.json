@@ -1,5 +1,5 @@
 {
-  "extends": "@infrastructure/typescript-config",
+  "extends": "@pcvera-puzzles/typescript-config",
   "compilerOptions": {
     "outDir": "../../dist/packages/sample-package",
     "rootDir": "./src"

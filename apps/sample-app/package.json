@@ -1,5 +1,5 @@
 {
-  "name": "@puzzles/sample-app",
+  "name": "@pcvera-puzzles/sample-app",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,6 +11,7 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "@pcvera-puzzles/vite-config": "workspace:*"
   }
 }
