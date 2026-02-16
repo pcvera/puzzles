@@ -1,0 +1,17 @@
+{
+  "name": "@pcvera-puzzles/postcss-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./postcss.config.js",
+  "exports": {
+    ".": "./postcss.config.js"
+  },
+  "files": [
+    "postcss.config.js"
+  ],
+  "dependencies": {
+    "postcss-import": "^16.0.0",
+    "autoprefixer": "^10.4.0"
+  }
+}

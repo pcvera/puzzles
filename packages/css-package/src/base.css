@@ -1,0 +1,12 @@
+/* Base styles */
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --spacing-unit: 0.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
