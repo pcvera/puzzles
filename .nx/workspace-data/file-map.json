@@ -1,0 +1,58 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.8.4",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "sample-package": [
+        {
+          "file": "packages/sample-package/package.json",
+          "hash": "3454530774286997774"
+        },
+        {
+          "file": "packages/sample-package/project.json",
+          "hash": "8995668246301839347"
+        },
+        {
+          "file": "packages/sample-package/src/index.ts",
+          "hash": "15886974034970435752"
+        },
+        {
+          "file": "packages/sample-package/tsconfig.json",
+          "hash": "13899249760558973420"
+        },
+        {
+          "file": "packages/sample-package/tsup.config.ts",
+          "hash": "1745691601389543534"
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "16050552148987618223"
+      },
+      {
+        "file": ".nxignore",
+        "hash": "5858041523695137995"
+      },
+      {
+        "file": "README.md",
+        "hash": "387311521286477596"
+      },
+      {
+        "file": "nx.json",
+        "hash": "12639578647833808878"
+      },
+      {
+        "file": "package.json",
+        "hash": "10724836340579412688"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "9750177317466281158"
+      }
+    ]
+  }
+}

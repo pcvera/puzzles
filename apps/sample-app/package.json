@@ -1,0 +1,16 @@
+{
+  "name": "@puzzles/sample-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "vite build",
+    "start": "node dist/main.js",
+    "dev": "tsx watch src/main.ts",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  }
+}

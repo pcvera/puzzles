@@ -1,0 +1,26 @@
+Failed to start or connect to the Nx Daemon process.
+
+Messages from the log:
+Error: listen EPERM: operation not permitted /private/var/folders/z6/m8b4t02n7nvf1pvq5b2_s5x00000gn/T/e5136024472015562d80/d.sock
+    at Server.setupListenHandle [as _listen2] (node:net:1915:21)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2116:5)
+    at /Users/pcvera/dev/puzzles-monorepo/node_modules/.pnpm/nx@20.8.4/node_modules/nx/src/daemon/server/server.js:368:20
+    at new Promise (<anonymous>)
+    at startServer (/Users/pcvera/dev/puzzles-monorepo/node_modules/.pnpm/nx@20.8.4/node_modules/nx/src/daemon/server/server.js:366:12)
+    at async /Users/pcvera/dev/puzzles-monorepo/node_modules/.pnpm/nx@20.8.4/node_modules/nx/src/daemon/server/start.js:8:9
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '/private/var/folders/z6/m8b4t02n7nvf1pvq5b2_s5x00000gn/T/e5136024472015562d80/d.sock',
+  port: -1
+}
+
+Node.js v22.14.0
+
+
+
+More information: /Users/pcvera/dev/puzzles-monorepo/.nx/workspace-data/d/daemon.log

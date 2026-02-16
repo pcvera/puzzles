@@ -1,0 +1,35 @@
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.418Z - Started listening on: /private/var/folders/z6/m8b4t02n7nvf1pvq5b2_s5x00000gn/T/e5136024472015562d80/d.sock
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.419Z - [WATCHER]: Subscribed to changes within: /Users/pcvera/dev/puzzles-monorepo (native)
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.426Z - Established a connection. Number of open connections: 1
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.427Z - Established a connection. Number of open connections: 2
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.427Z - Closed a connection. Number of open connections: 1
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.428Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.428Z - Done responding to the client Shutdown initiated
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.428Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 0.
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.429Z - [WATCHER]: Stopping the watcher for /Users/pcvera/dev/puzzles-monorepo (sources)
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.430Z - Closed a connection. Number of open connections: 0
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.430Z - [WATCHER]: Stopping the watcher for /Users/pcvera/dev/puzzles-monorepo (outputs)
+[NX v20.8.4 Daemon Server] - 2026-02-09T00:41:33.430Z - Server stopped because: "Request to shutdown"
+node:events:496
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EPERM: operation not permitted /private/var/folders/z6/m8b4t02n7nvf1pvq5b2_s5x00000gn/T/e5136024472015562d80/d.sock
+    at Server.setupListenHandle [as _listen2] (node:net:1915:21)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2116:5)
+    at /Users/pcvera/dev/puzzles-monorepo/node_modules/.pnpm/nx@20.8.4/node_modules/nx/src/daemon/server/server.js:368:20
+    at new Promise (<anonymous>)
+    at startServer (/Users/pcvera/dev/puzzles-monorepo/node_modules/.pnpm/nx@20.8.4/node_modules/nx/src/daemon/server/server.js:366:12)
+    at async /Users/pcvera/dev/puzzles-monorepo/node_modules/.pnpm/nx@20.8.4/node_modules/nx/src/daemon/server/start.js:8:9
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '/private/var/folders/z6/m8b4t02n7nvf1pvq5b2_s5x00000gn/T/e5136024472015562d80/d.sock',
+  port: -1
+}
+
+Node.js v22.14.0

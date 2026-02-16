@@ -1,0 +1,81 @@
+{
+  "nodes": {
+    "sample-package": {
+      "name": "sample-package",
+      "type": "lib",
+      "data": {
+        "root": "packages/sample-package",
+        "name": "sample-package",
+        "projectType": "library",
+        "tags": [
+          "npm:public"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@puzzles/sample-package",
+            "packageExports": {
+              ".": {
+                "import": "./dist/index.mjs",
+                "require": "./dist/index.js",
+                "types": "./dist/index.d.ts"
+              }
+            },
+            "packageMain": "./dist/index.js",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "targets": {
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "nx:run-commands",
+            "outputs": [
+              "{projectRoot}/dist"
+            ],
+            "options": {
+              "command": "tsup",
+              "cwd": "packages/sample-package"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "clean": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "rm -rf dist",
+              "cwd": "packages/sample-package"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": false
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/sample-package/src",
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "sample-package": []
+  },
+  "version": "6.0",
+  "errors": [],
+  "computedAt": 1770597693557
+}
