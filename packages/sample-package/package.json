@@ -13,10 +13,14 @@
   "scripts": {
     "build": "vite build",
     "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@pcvera-puzzles/eslint-config": "workspace:*",
-    "@pcvera-puzzles/vite-config": "workspace:*"
+    "@pcvera-puzzles/vite-config": "workspace:*",
+    "@pcvera-puzzles/vitest-config": "workspace:*",
+    "vitest": "^2.0.0"
   }
 }
