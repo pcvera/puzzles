@@ -12,9 +12,11 @@
   },
   "scripts": {
     "build": "vite build",
+    "lint": "eslint .",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
+    "@pcvera-puzzles/eslint-config": "workspace:*",
     "@pcvera-puzzles/vite-config": "workspace:*"
   }
 }
