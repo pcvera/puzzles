@@ -15,7 +15,6 @@ export const PointyTop: Story = {
       --hex-size: 100px;
       display: flex;
       gap: 10px;
-      padding: 20px;
     `;
     container.className = 'pointy-top';
 
@@ -45,7 +44,6 @@ export const FlatTop: Story = {
       --hex-size: 100px;
       display: flex;
       gap: 10px;
-      padding: 20px;
     `;
     container.className = 'flat-top';
 

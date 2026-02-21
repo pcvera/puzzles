@@ -12,15 +12,14 @@ export const Basic: Story = {
   render: () => {
     const container = document.createElement('div');
     container.style.cssText = `
-      --hex-size: 60px;
-      --gap: 2px;
+      --hex-size: 120px;
+      --gap: 0px;
       --min-q: 0;
       --max-q: 4;
       --min-r: 0;
       --max-r: 3;
       position: relative;
       background: #f0f0f0;
-      padding: 20px;
     `;
     container.className = 'offset-grid';
 
@@ -32,7 +31,6 @@ export const Basic: Story = {
         hex.style.cssText = `
           --q: ${q};
           --r: ${r};
-          --hex-size: 60px;
           width: calc(var(--hex-size) / 1.1547);
           height: var(--hex-size);
           clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);

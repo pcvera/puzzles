@@ -18,10 +18,10 @@
 .offset-grid {
   --hex-width: calc(var(--hex-size) / 1.1547);
   width: calc(
-    (var(--max-q) - var(--min-q) + 1.25) * (var(--hex-width) + var(--gap))
+    (var(--max-q) - var(--min-q) + 1.5) * (var(--hex-width) + var(--gap))
   );
   height: calc(
-    (var(--max-r) - var(--min-r) + 1.25) * (var(--hex-size) * 0.75 + var(--gap))
+    var(--hex-size) + (var(--max-r) - var(--min-r)) * (var(--hex-size) * 0.75 + (var(--gap)))
   );
   --q-origin: var(--min-q);
   --r-origin: var(--min-r);
