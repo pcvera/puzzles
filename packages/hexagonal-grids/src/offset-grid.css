@@ -1,5 +1,9 @@
 .offset-grid .placed-hex {
   position: absolute;
+}
+
+/* Pointy-top orientation (odd-r or even-r offset) */
+.offset-grid.pointy-top .placed-hex {
   /* Calculate parity from --r: mod(r, 2) = r - 2 * round(r / 2) */
   /* For integers, this gives 0 for even rows, 1 for odd rows */
   --parity: calc(var(--r) - 2 * round(var(--r) / 2));
@@ -15,14 +19,45 @@
   left: var(--x-offset);
 }
 
+/* Flat-top orientation (odd-r or even-r offset) */
+.offset-grid.flat-top .placed-hex {
+  /* Calculate parity from --q: mod(q, 2) = q - 2 * round(q / 2) */
+  /* For integers, this gives 0 for even columns, 1 for odd columns */
+  --parity: calc(var(--q) - 2 * round(var(--q) / 2));
+  --x-offset: calc(
+    (var(--q) - var(--q-origin)) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  --y-offset: calc(
+    ((var(--r) - var(--r-origin)) - 0.5 * var(--parity)) *
+      (var(--hex-width) + var(--gap))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
 .offset-grid {
   --hex-width: calc(var(--hex-size) / 1.1547);
+  --q-origin: var(--min-q);
+  --r-origin: var(--min-r);
+}
+
+/* Flat-top grid dimensions */
+.offset-grid.pointy-top {
   width: calc(
     (var(--max-q) - var(--min-q) + 1.5) * (var(--hex-width) + var(--gap))
   );
   height: calc(
-    var(--hex-size) + (var(--max-r) - var(--min-r)) * (var(--hex-size) * 0.75 + (var(--gap)))
+    var(--hex-size) + (var(--max-r) - var(--min-r)) * (var(--hex-size) * 0.75 + var(--gap))
   );
-  --q-origin: var(--min-q);
-  --r-origin: var(--min-r);
+}
+
+/* Pointy-top grid dimensions */
+.offset-grid.flat-top {
+  width: calc(
+    var(--hex-size) + (var(--max-q) - var(--min-q)) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  height: calc(
+    (var(--max-r) - var(--min-r) + 1.5) * (var(--hex-width) + var(--gap))
+  );
 }
