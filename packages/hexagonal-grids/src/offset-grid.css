@@ -6,9 +6,11 @@
 .offset-grid.pointy-top .placed-hex {
   /* Calculate parity from --r: mod(r, 2) = r - 2 * round(r / 2) */
   /* For integers, this gives 0 for even rows, 1 for odd rows */
-  --parity: calc(var(--r) - 2 * round(var(--r) / 2));
+  --parity-base: calc(var(--r) - 2 * round(var(--r) / 2));
+  --parity: calc(var(--parity-base) + var(--flip-parity) - 2 * var(--parity-base) * var(--flip-parity));
+  /* When flip-parity is active (even-r), add 1.0 hex-width to compensate for origin row shift */
   --x-offset: calc(
-    ((var(--q) - var(--q-origin)) - 0.5 * var(--parity)) *
+    ((var(--q) - var(--q-origin)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
       (var(--hex-width) + var(--gap))
   );
   --y-offset: calc(
@@ -23,12 +25,14 @@
 .offset-grid.flat-top .placed-hex {
   /* Calculate parity from --q: mod(q, 2) = q - 2 * round(q / 2) */
   /* For integers, this gives 0 for even columns, 1 for odd columns */
-  --parity: calc(var(--q) - 2 * round(var(--q) / 2));
+  --parity-base: calc(var(--q) - 2 * round(var(--q) / 2));
+  --parity: calc(var(--parity-base) + var(--flip-parity) - 2 * var(--parity-base) * var(--flip-parity));
   --x-offset: calc(
     (var(--q) - var(--q-origin)) * (var(--hex-size) * 0.75 + var(--gap))
   );
+  /* When flip-parity is active (even-q), add 1.0 hex-width to compensate for origin column shift */
   --y-offset: calc(
-    ((var(--r) - var(--r-origin)) - 0.5 * var(--parity)) *
+    ((var(--r) - var(--r-origin)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
       (var(--hex-width) + var(--gap))
   );
 
@@ -40,6 +44,7 @@
   --hex-width: calc(var(--hex-size) / 1.1547);
   --q-origin: var(--min-q);
   --r-origin: var(--min-r);
+  --flip-parity: 0;
 }
 
 /* Flat-top grid dimensions */
@@ -60,4 +65,20 @@
   height: calc(
     (var(--max-r) - var(--min-r) + 1.5) * (var(--hex-width) + var(--gap))
   );
+}
+
+.offset-grid.pointy-top.even-r {
+    --flip-parity: 1;
+}
+
+.offset-grid.pointy-top.odd-r {
+    --flip-parity: 0;
+}
+
+.offset-grid.flat-top.even-q {
+    --flip-parity: 1;
+}
+
+.offset-grid.flat-top.odd-q {
+    --flip-parity: 0;
 }
