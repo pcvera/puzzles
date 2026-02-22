@@ -1,12 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/html';
+import type { Meta, StoryObj } from '@storybook/html-vite';
+
+type OffsetGridArgs = {
+  offsetType: 'odd-q' | 'even-q' | 'odd-r' | 'even-r';
+};
 
 const meta = {
   title: 'Grid/Offset Grid',
   tags: ['autodocs'],
-} satisfies Meta;
+} satisfies Meta<OffsetGridArgs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<OffsetGridArgs>;
 
 function createHex(q: number, r: number) {
   const hex = document.createElement('div');
