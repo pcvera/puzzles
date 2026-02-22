@@ -1,12 +1,12 @@
 import type { Preview } from '@storybook/html-vite'
 
-// Import all hexagonal grid CSS files from dist (pre-built)
-// Make sure to run `pnpm build` first to generate the dist files
-import '../dist/hexagon.css';
-import '../dist/offset-grid.css';
-import '../dist/axial-grid.css';
-import '../dist/cube-grid.css';
-import '../dist/doubled-grid.css';
+// Import all hexagonal grid CSS files
+// Note: These will be processed by PostCSS via Vite during Storybook development
+import '../src/hexagon.css';
+import '../src/offset-grid.css';
+import '../src/axial-grid.css';
+import '../src/cube-grid.css';
+import '../src/doubled-grid.css';
 
 const preview: Preview = {
   parameters: {
