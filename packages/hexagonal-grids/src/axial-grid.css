@@ -1,0 +1,59 @@
+.axial-grid .placed-hex {
+  position: absolute;
+}
+
+.axial-grid.pointy-top .placed-hex {
+  --x-offset: calc(
+    (var(--hex-size) * 0.866025 + var(--gap)) * (var(--q) - var(--q-origin) + 0.5 * (var(--r) - var(--r-origin)))
+  );
+  --y-offset: calc(
+    (var(--hex-size) * 0.75 + var(--gap)) * (var(--r) - var(--r-origin))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.axial-grid.flat-top .placed-hex {
+  --x-offset: calc(
+    (var(--hex-size) * 0.75 + var(--gap)) * (var(--q) - var(--q-origin))
+  );
+  --y-offset: calc(
+    (var(--hex-size) * 0.866025 + var(--gap)) * (0.5 * (var(--q) - var(--q-origin)) + (var(--r) - var(--r-origin)))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.axial-grid {
+  --hex-width: calc(var(--hex-size) / 1.1547);
+  --q-origin: var(--min-q);
+  --r-origin: var(--min-r);
+  --min-x-coord: calc(var(--min-q) + var(--min-r) * 0.5);
+  --max-x-coord: calc(var(--max-q) + var(--max-r) * 0.5);
+  --min-y-coord: calc(var(--min-q) * 0.5 + var(--min-r));
+  --max-y-coord: calc(var(--max-q) * 0.5 + var(--max-r));
+}
+
+.axial-grid.pointy-top {
+  width: calc(
+    (var(--hex-size) * 0.866025 + var(--gap)) * (var(--max-x-coord) - var(--min-x-coord)) +
+    var(--hex-width)
+  );
+  height: calc(
+    (var(--hex-size) * 0.75 + var(--gap)) * (var(--max-r) - var(--min-r)) +
+    var(--hex-size)
+  );
+}
+
+.axial-grid.flat-top {
+  width: calc(
+    (var(--hex-size) * 0.75 + var(--gap)) * (var(--max-q) - var(--min-q)) +
+    var(--hex-size)
+  );
+  height: calc(
+    (var(--hex-size) * 0.866025 + var(--gap)) * (var(--max-y-coord) - var(--min-y-coord)) +
+    var(--hex-width)
+  );
+}

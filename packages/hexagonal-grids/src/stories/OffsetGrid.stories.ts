@@ -2,6 +2,11 @@ import type { Meta, StoryObj } from '@storybook/html-vite';
 
 type OffsetGridArgs = {
   offsetType: 'odd-q' | 'even-q' | 'odd-r' | 'even-r';
+  gap: number;
+  widthHexes: number;
+  heightHexes: number;
+  xOffsetHexes: number;
+  yOffsetHexes: number;
 };
 
 const meta = {
@@ -33,6 +38,11 @@ function createHex(q: number, r: number) {
 export const FlatTop: Story = {
   args: {
     offsetType: 'odd-q',
+    gap: 0,
+    widthHexes: 5,
+    heightHexes: 4,
+    xOffsetHexes: 0,
+    yOffsetHexes: 0,
   },
   argTypes: {
     offsetType: {
@@ -43,24 +53,44 @@ export const FlatTop: Story = {
         'even-q': 'Even-Q',
       },
     },
+    gap: {
+      control: { type: 'range', min: 0, max: 20, step: 1 },
+      description: 'Gap between hexagons in pixels',
+    },
+    widthHexes: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Container width in hexes (fractional supported)',
+    },
+    heightHexes: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Container height in hexes (fractional supported)',
+    },
+    xOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'X offset in hexes (fractional supported)',
+    },
+    yOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'Y offset in hexes (fractional supported)',
+    },
   },
   render: (args) => {
     const container = document.createElement('div');
     container.style.cssText = `
       --hex-size: 120px;
-      --gap: 0px;
-      --min-q: 0;
-      --max-q: 4;
-      --min-r: 0;
-      --max-r: 3;
+      --gap: ${args.gap}px;
+      --width-hexes: ${args.widthHexes};
+      --height-hexes: ${args.heightHexes};
+      --x-offset-hexes: ${args.xOffsetHexes};
+      --y-offset-hexes: ${args.yOffsetHexes};
       position: relative;
       background: #f0f0f0;
     `;
     container.className = `offset-grid flat-top ${args.offsetType}`;
 
-    // Create a grid of hexagons
-    for (let r = 0; r <= 3; r++) {
-      for (let q = 0; q <= 4; q++) {
+    // Create a fixed grid of hexagons (5x4) - width/height only affect container sizing
+    for (let r = 0; r < 4; r++) {
+      for (let q = 0; q < 5; q++) {
         container.appendChild(createHex(q, r));
       }
     }
@@ -72,6 +102,11 @@ export const FlatTop: Story = {
 export const PointyTop: Story = {
   args: {
     offsetType: 'odd-r',
+    gap: 0,
+    widthHexes: 5,
+    heightHexes: 4,
+    xOffsetHexes: 0,
+    yOffsetHexes: 0,
   },
   argTypes: {
     offsetType: {
@@ -82,24 +117,44 @@ export const PointyTop: Story = {
         'even-r': 'Even-R',
       },
     },
+    gap: {
+      control: { type: 'range', min: 0, max: 20, step: 1 },
+      description: 'Gap between hexagons in pixels',
+    },
+    widthHexes: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Container width in hexes (fractional supported)',
+    },
+    heightHexes: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Container height in hexes (fractional supported)',
+    },
+    xOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'X offset in hexes (fractional supported)',
+    },
+    yOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'Y offset in hexes (fractional supported)',
+    },
   },
   render: (args) => {
     const container = document.createElement('div');
     container.style.cssText = `
       --hex-size: 120px;
-      --gap: 0px;
-      --min-q: 0;
-      --max-q: 4;
-      --min-r: 0;
-      --max-r: 3;
+      --gap: ${args.gap}px;
+      --width-hexes: ${args.widthHexes};
+      --height-hexes: ${args.heightHexes};
+      --x-offset-hexes: ${args.xOffsetHexes};
+      --y-offset-hexes: ${args.yOffsetHexes};
       position: relative;
       background: #f0f0f0;
     `;
     container.className = `offset-grid pointy-top ${args.offsetType}`;
 
-    // Create a grid of hexagons
-    for (let r = 0; r <= 3; r++) {
-      for (let q = 0; q <= 4; q++) {
+    // Create a fixed grid of hexagons (5x4) - width/height only affect container sizing
+    for (let r = 0; r < 4; r++) {
+      for (let q = 0; q < 5; q++) {
         container.appendChild(createHex(q, r));
       }
     }

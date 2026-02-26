@@ -10,11 +10,11 @@
   --parity: calc(var(--parity-base) + var(--flip-parity) - 2 * var(--parity-base) * var(--flip-parity));
   /* When flip-parity is active (even-r), add 1.0 hex-width to compensate for origin row shift */
   --x-offset: calc(
-    ((var(--q) - var(--q-origin)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
+    ((var(--q) - var(--x-offset-hexes)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
       (var(--hex-width) + var(--gap))
   );
   --y-offset: calc(
-    (var(--r) - var(--r-origin)) * (var(--hex-size) * 0.75 + var(--gap))
+    (var(--r) - var(--y-offset-hexes)) * (var(--hex-size) * 0.75 + var(--gap))
   );
 
   top: var(--y-offset);
@@ -28,11 +28,11 @@
   --parity-base: calc(var(--q) - 2 * round(var(--q) / 2));
   --parity: calc(var(--parity-base) + var(--flip-parity) - 2 * var(--parity-base) * var(--flip-parity));
   --x-offset: calc(
-    (var(--q) - var(--q-origin)) * (var(--hex-size) * 0.75 + var(--gap))
+    (var(--q) - var(--x-offset-hexes)) * (var(--hex-size) * 0.75 + var(--gap))
   );
   /* When flip-parity is active (even-q), add 1.0 hex-width to compensate for origin column shift */
   --y-offset: calc(
-    ((var(--r) - var(--r-origin)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
+    ((var(--r) - var(--y-offset-hexes)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
       (var(--hex-width) + var(--gap))
   );
 
@@ -42,28 +42,28 @@
 
 .offset-grid {
   --hex-width: calc(var(--hex-size) / 1.1547);
-  --q-origin: var(--min-q);
-  --r-origin: var(--min-r);
+  --x-offset-hexes: 0;
+  --y-offset-hexes: 0;
   --flip-parity: 0;
 }
 
-/* Flat-top grid dimensions */
+/* Pointy-top grid dimensions */
 .offset-grid.pointy-top {
   width: calc(
-    (var(--max-q) - var(--min-q) + 1.5) * (var(--hex-width) + var(--gap))
+    (var(--width-hexes) + 0.5) * (var(--hex-width) + var(--gap))
   );
   height: calc(
-    var(--hex-size) + (var(--max-r) - var(--min-r)) * (var(--hex-size) * 0.75 + var(--gap))
+    var(--hex-size) + (var(--height-hexes) - 1) * (var(--hex-size) * 0.75 + var(--gap))
   );
 }
 
-/* Pointy-top grid dimensions */
+/* Flat-top grid dimensions */
 .offset-grid.flat-top {
   width: calc(
-    var(--hex-size) + (var(--max-q) - var(--min-q)) * (var(--hex-size) * 0.75 + var(--gap))
+    var(--hex-size) + (var(--width-hexes) - 1) * (var(--hex-size) * 0.75 + var(--gap))
   );
   height: calc(
-    (var(--max-r) - var(--min-r) + 1.5) * (var(--hex-width) + var(--gap))
+    (var(--height-hexes) + 0.5) * (var(--hex-width) + var(--gap))
   );
 }
 
