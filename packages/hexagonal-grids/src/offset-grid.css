@@ -49,21 +49,25 @@
 
 /* Pointy-top grid dimensions */
 .offset-grid.pointy-top {
+  /* Width: columns are staggered */
   width: calc(
-    (var(--width-hexes) + 0.5) * (var(--hex-width) + var(--gap))
+    var(--col-count) * (var(--hex-width) + var(--gap))
   );
+  /* Height: first row is full height, subsequent rows add 0.75 spacing */
   height: calc(
-    var(--hex-size) + (var(--height-hexes) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+    var(--hex-size) + (var(--row-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
   );
 }
 
 /* Flat-top grid dimensions */
 .offset-grid.flat-top {
+  /* Width: first column is full width, subsequent columns add 0.75 spacing */
   width: calc(
-    var(--hex-size) + (var(--width-hexes) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+    var(--hex-size) + (var(--col-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
   );
+  /* Height: rows are staggered */
   height: calc(
-    (var(--height-hexes) + 0.5) * (var(--hex-width) + var(--gap))
+    var(--row-count) * (var(--hex-width) + var(--gap))
   );
 }
 

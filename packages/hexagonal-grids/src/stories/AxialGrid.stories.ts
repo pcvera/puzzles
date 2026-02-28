@@ -3,6 +3,10 @@ import type { Meta, StoryObj } from '@storybook/html-vite';
 type AxialGridArgs = {
   orientation: 'pointy-top' | 'flat-top';
   gap: number;
+  rowCount: number;
+  colCount: number;
+  xOffsetHexes: number;
+  yOffsetHexes: number;
 };
 
 const meta = {
@@ -35,6 +39,10 @@ export const FlatTop: Story = {
   args: {
     orientation: 'flat-top',
     gap: 0,
+    rowCount: 4,
+    colCount: 5,
+    xOffsetHexes: 0,
+    yOffsetHexes: 0,
   },
   argTypes: {
     orientation: {
@@ -49,53 +57,41 @@ export const FlatTop: Story = {
       control: { type: 'range', min: 0, max: 20, step: 1 },
       description: 'Gap between hexagons in pixels',
     },
+    rowCount: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Number of rows (fractional supported)',
+    },
+    colCount: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Number of columns (fractional supported)',
+    },
+    xOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'X offset in hexes (fractional supported)',
+    },
+    yOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'Y offset in hexes (fractional supported)',
+    },
   },
   render: (args) => {
     const container = document.createElement('div');
     
-    // Calculate accurate bounds for the grid
-    const minQ = 0;
-    const maxQ = 4;
-    const minR = 0;
-    const maxR = 3;
-    
-    // For pointy-top: x depends on (q + r/2)
-    // For flat-top: y depends on (q/2 + r)
-    let minXCoord = Infinity;
-    let maxXCoord = -Infinity;
-    let minYCoord = Infinity;
-    let maxYCoord = -Infinity;
-    
-    for (let r = minR; r <= maxR; r++) {
-      for (let q = minQ; q <= maxQ; q++) {
-        const xCoord = q + r / 2;
-        const yCoord = q / 2 + r;
-        minXCoord = Math.min(minXCoord, xCoord);
-        maxXCoord = Math.max(maxXCoord, xCoord);
-        minYCoord = Math.min(minYCoord, yCoord);
-        maxYCoord = Math.max(maxYCoord, yCoord);
-      }
-    }
-    
     container.style.cssText = `
       --hex-size: 120px;
-      --gap: ${args.gap}px;
-      --min-q: ${minQ};
-      --max-q: ${maxQ};
-      --min-r: ${minR};
-      --max-r: ${maxR};
-      --min-x-coord: ${minXCoord};
-      --max-x-coord: ${maxXCoord};
-      --min-y-coord: ${minYCoord};
-      --max-y-coord: ${maxYCoord};
+      --gap: ${args.gap ?? 0}px;
+      --row-count: ${args.rowCount ?? 4};
+      --col-count: ${args.colCount ?? 5};
+      --x-offset-hexes: ${args.xOffsetHexes ?? 0};
+      --y-offset-hexes: ${args.yOffsetHexes ?? 0};
       position: relative;
       background: #f0f0f0;
     `;
     container.className = `axial-grid ${args.orientation}`;
 
-    // Create a grid of hexagons
-    for (let r = minR; r <= maxR; r++) {
-      for (let q = minQ; q <= maxQ; q++) {
+    // Create a fixed grid of hexagons (5x4) - width/height only affect container sizing
+    for (let r = 0; r < 4; r++) {
+      for (let q = 0; q < 5; q++) {
         container.appendChild(createHex(q, r));
       }
     }
@@ -108,6 +104,10 @@ export const PointyTop: Story = {
   args: {
     orientation: 'pointy-top',
     gap: 0,
+    rowCount: 4,
+    colCount: 5,
+    xOffsetHexes: 0,
+    yOffsetHexes: 0,
   },
   argTypes: {
     orientation: {
@@ -122,53 +122,41 @@ export const PointyTop: Story = {
       control: { type: 'range', min: 0, max: 20, step: 1 },
       description: 'Gap between hexagons in pixels',
     },
+    rowCount: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Number of rows (fractional supported)',
+    },
+    colCount: {
+      control: { type: 'range', min: 1, max: 10, step: 0.1 },
+      description: 'Number of columns (fractional supported)',
+    },
+    xOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'X offset in hexes (fractional supported)',
+    },
+    yOffsetHexes: {
+      control: { type: 'range', min: -5, max: 5, step: 0.1 },
+      description: 'Y offset in hexes (fractional supported)',
+    },
   },
   render: (args) => {
     const container = document.createElement('div');
     
-    // Calculate accurate bounds for the grid
-    const minQ = 0;
-    const maxQ = 4;
-    const minR = 0;
-    const maxR = 3;
-    
-    // For pointy-top: x depends on (q + r/2)
-    // For flat-top: y depends on (q/2 + r)
-    let minXCoord = Infinity;
-    let maxXCoord = -Infinity;
-    let minYCoord = Infinity;
-    let maxYCoord = -Infinity;
-    
-    for (let r = minR; r <= maxR; r++) {
-      for (let q = minQ; q <= maxQ; q++) {
-        const xCoord = q + r / 2;
-        const yCoord = q / 2 + r;
-        minXCoord = Math.min(minXCoord, xCoord);
-        maxXCoord = Math.max(maxXCoord, xCoord);
-        minYCoord = Math.min(minYCoord, yCoord);
-        maxYCoord = Math.max(maxYCoord, yCoord);
-      }
-    }
-    
     container.style.cssText = `
       --hex-size: 120px;
-      --gap: ${args.gap}px;
-      --min-q: ${minQ};
-      --max-q: ${maxQ};
-      --min-r: ${minR};
-      --max-r: ${maxR};
-      --min-x-coord: ${minXCoord};
-      --max-x-coord: ${maxXCoord};
-      --min-y-coord: ${minYCoord};
-      --max-y-coord: ${maxYCoord};
+      --gap: ${args.gap ?? 0}px;
+      --row-count: ${args.rowCount ?? 4};
+      --col-count: ${args.colCount ?? 5};
+      --x-offset-hexes: ${args.xOffsetHexes ?? 0};
+      --y-offset-hexes: ${args.yOffsetHexes ?? 0};
       position: relative;
       background: #f0f0f0;
     `;
     container.className = `axial-grid ${args.orientation}`;
 
-    // Create a grid of hexagons
-    for (let r = minR; r <= maxR; r++) {
-      for (let q = minQ; q <= maxQ; q++) {
+    // Create a fixed grid of hexagons (5x4) - width/height only affect container sizing
+    for (let r = 0; r < 4; r++) {
+      for (let q = 0; q < 5; q++) {
         container.appendChild(createHex(q, r));
       }
     }

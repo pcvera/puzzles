@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/html-vite';
 type OffsetGridArgs = {
   offsetType: 'odd-q' | 'even-q' | 'odd-r' | 'even-r';
   gap: number;
-  widthHexes: number;
-  heightHexes: number;
+  rowCount: number;
+  colCount: number;
   xOffsetHexes: number;
   yOffsetHexes: number;
 };
@@ -39,8 +39,8 @@ export const FlatTop: Story = {
   args: {
     offsetType: 'odd-q',
     gap: 0,
-    widthHexes: 5,
-    heightHexes: 4,
+    rowCount: 4,
+    colCount: 5,
     xOffsetHexes: 0,
     yOffsetHexes: 0,
   },
@@ -57,13 +57,13 @@ export const FlatTop: Story = {
       control: { type: 'range', min: 0, max: 20, step: 1 },
       description: 'Gap between hexagons in pixels',
     },
-    widthHexes: {
+    rowCount: {
       control: { type: 'range', min: 1, max: 10, step: 0.1 },
-      description: 'Container width in hexes (fractional supported)',
+      description: 'Number of rows (fractional supported)',
     },
-    heightHexes: {
+    colCount: {
       control: { type: 'range', min: 1, max: 10, step: 0.1 },
-      description: 'Container height in hexes (fractional supported)',
+      description: 'Number of columns (fractional supported)',
     },
     xOffsetHexes: {
       control: { type: 'range', min: -5, max: 5, step: 0.1 },
@@ -78,11 +78,11 @@ export const FlatTop: Story = {
     const container = document.createElement('div');
     container.style.cssText = `
       --hex-size: 120px;
-      --gap: ${args.gap}px;
-      --width-hexes: ${args.widthHexes};
-      --height-hexes: ${args.heightHexes};
-      --x-offset-hexes: ${args.xOffsetHexes};
-      --y-offset-hexes: ${args.yOffsetHexes};
+      --gap: ${args.gap ?? 0}px;
+      --row-count: ${args.rowCount ?? 4};
+      --col-count: ${args.colCount ?? 5};
+      --x-offset-hexes: ${args.xOffsetHexes ?? 0};
+      --y-offset-hexes: ${args.yOffsetHexes ?? 0};
       position: relative;
       background: #f0f0f0;
     `;
@@ -103,8 +103,8 @@ export const PointyTop: Story = {
   args: {
     offsetType: 'odd-r',
     gap: 0,
-    widthHexes: 5,
-    heightHexes: 4,
+    rowCount: 4,
+    colCount: 5,
     xOffsetHexes: 0,
     yOffsetHexes: 0,
   },
@@ -121,13 +121,13 @@ export const PointyTop: Story = {
       control: { type: 'range', min: 0, max: 20, step: 1 },
       description: 'Gap between hexagons in pixels',
     },
-    widthHexes: {
+    rowCount: {
       control: { type: 'range', min: 1, max: 10, step: 0.1 },
-      description: 'Container width in hexes (fractional supported)',
+      description: 'Number of rows (fractional supported)',
     },
-    heightHexes: {
+    colCount: {
       control: { type: 'range', min: 1, max: 10, step: 0.1 },
-      description: 'Container height in hexes (fractional supported)',
+      description: 'Number of columns (fractional supported)',
     },
     xOffsetHexes: {
       control: { type: 'range', min: -5, max: 5, step: 0.1 },
@@ -142,11 +142,11 @@ export const PointyTop: Story = {
     const container = document.createElement('div');
     container.style.cssText = `
       --hex-size: 120px;
-      --gap: ${args.gap}px;
-      --width-hexes: ${args.widthHexes};
-      --height-hexes: ${args.heightHexes};
-      --x-offset-hexes: ${args.xOffsetHexes};
-      --y-offset-hexes: ${args.yOffsetHexes};
+      --gap: ${args.gap ?? 0}px;
+      --row-count: ${args.rowCount ?? 4};
+      --col-count: ${args.colCount ?? 5};
+      --x-offset-hexes: ${args.xOffsetHexes ?? 0};
+      --y-offset-hexes: ${args.yOffsetHexes ?? 0};
       position: relative;
       background: #f0f0f0;
     `;
