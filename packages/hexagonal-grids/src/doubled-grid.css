@@ -1,0 +1,71 @@
+.doubled-grid .placed-hex {
+  position: absolute;
+}
+
+/* Pointy-top orientation (doubled-width) */
+/* In doubled-width: col = 2*q + r, row = r */
+/* Convert from axial (q, r) to doubled-width (col, row) then position */
+/* No parity needed - columns are doubled, rows are not staggered */
+.doubled-grid.pointy-top .placed-hex {
+  /* col = 2*q + r, so x = (2*q + r) * (hex-width + gap) / 2 */
+  /* The /2 accounts for the doubled column coordinate */
+  --x-offset: calc(
+    ((2 * (var(--q) - var(--x-offset-hexes)) + (var(--r) - var(--y-offset-hexes))) * (var(--hex-width) + var(--gap))) / 2
+  );
+  /* row = r, so y is simple: r * (hex-size * 0.75 + gap) */
+  --y-offset: calc(
+    ((var(--r) - var(--y-offset-hexes)) * (var(--hex-size) * 0.75 + var(--gap)))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+/* Flat-top orientation (doubled-height) */
+/* In doubled-height: col = q, row = 2*r + q */
+/* Convert from axial (q, r) to doubled-height (col, row) then position */
+/* No parity needed - columns are not staggered, rows are doubled */
+.doubled-grid.flat-top .placed-hex {
+  /* col = q, so x is simple: q * (hex-size * 0.75 + gap) */
+  --x-offset: calc(
+    ((var(--q) - var(--x-offset-hexes)) * (var(--hex-size) * 0.75 + var(--gap)))
+  );
+  /* row = 2*r + q, so y = (2*r + q) * (hex-width + gap) / 2 */
+  /* The /2 accounts for the doubled row coordinate */
+  --y-offset: calc(
+    ((2 * (var(--r) - var(--y-offset-hexes)) + (var(--q) - var(--x-offset-hexes))) * (var(--hex-width) + var(--gap))) / 2
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.doubled-grid {
+  --hex-width: calc(var(--hex-size) / 1.1547);
+  --x-offset-hexes: 0;
+  --y-offset-hexes: 0;
+}
+
+/* Pointy-top grid dimensions */
+.doubled-grid.pointy-top {
+  /* Width: columns are staggered */
+  width: calc(
+    var(--col-count) * (var(--hex-width) + var(--gap))
+  );
+  /* Height: first row is full height, subsequent rows add 0.75 spacing */
+  height: calc(
+    var(--hex-size) + (var(--row-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+}
+
+/* Flat-top grid dimensions */
+.doubled-grid.flat-top {
+  /* Width: first column is full width, subsequent columns add 0.75 spacing */
+  width: calc(
+    var(--hex-size) + (var(--col-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  /* Height: rows are staggered */
+  height: calc(
+    var(--row-count) * (var(--hex-width) + var(--gap))
+  );
+}
