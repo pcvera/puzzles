@@ -1,7 +1,16 @@
 {
   "name": "@pcvera-puzzles/hexagonal-grids",
   "version": "0.1.0",
-  "private": true,
+  "description": "CSS utilities for creating hexagonal grid layouts with support for axial, offset, cube, and doubled coordinate systems",
+  "keywords": [
+    "hexagon",
+    "hexagonal",
+    "grid",
+    "axial",
+    "offset"
+  ],
+  "license": "MIT",
+  "author": "Peter Vera",
   "type": "module",
   "files": [
     "dist"
@@ -9,12 +18,10 @@
   "exports": {
     "./hexagon.css": "./dist/hexagon.css",
     "./axial-grid.css": "./dist/axial-grid.css",
-    "./offset-grid.css": "./dist/offset-grid.css",
-    "./cube-grid.css": "./dist/cube-grid.css",
-    "./doubled-grid.css": "./dist/doubled-grid.css"
+    "./offset-grid.css": "./dist/offset-grid.css"
   },
   "scripts": {
-    "build": "postcss src/hexagon.css -o dist/hexagon.css && postcss src/axial-grid.css -o dist/axial-grid.css && postcss src/offset-grid.css -o dist/offset-grid.css && postcss src/cube-grid.css -o dist/cube-grid.css && postcss src/doubled-grid.css -o dist/doubled-grid.css",
+    "build": "postcss src/hexagon.css -o dist/hexagon.css && postcss src/axial-grid.css -o dist/axial-grid.css && postcss src/offset-grid.css -o dist/offset-grid.css",
     "dev": "storybook dev -p 6006 --no-open",
     "clean": "rm -rf dist",
     "build-storybook": "storybook build"
