@@ -13,6 +13,7 @@
     "publish": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.0",
     "@types/node": "^20.0.0",
     "turbo": "^2.0.0",
     "tsx": "^4.8.1",
