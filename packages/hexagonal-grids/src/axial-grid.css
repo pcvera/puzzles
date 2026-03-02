@@ -1,0 +1,55 @@
+.axial-grid .placed-hex {
+  position: absolute;
+}
+
+.axial-grid.pointy-top .placed-hex {
+  --x-offset: calc(
+    (var(--hex-size) * 0.866025 + var(--gap)) * (var(--q) - var(--x-offset-hexes) + 0.5 * (var(--r) - var(--y-offset-hexes)))
+  );
+  --y-offset: calc(
+    (var(--hex-size) * 0.75 + var(--gap)) * (var(--r) - var(--y-offset-hexes))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.axial-grid.flat-top .placed-hex {
+  --x-offset: calc(
+    (var(--hex-size) * 0.75 + var(--gap)) * (var(--q) - var(--x-offset-hexes))
+  );
+  --y-offset: calc(
+    (var(--hex-size) * 0.866025 + var(--gap)) * (0.5 * (var(--q) - var(--x-offset-hexes)) + (var(--r) - var(--y-offset-hexes)))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.axial-grid {
+  --hex-width: calc(var(--hex-size) / 1.1547);
+  --x-offset-hexes: 0;
+  --y-offset-hexes: 0;
+}
+
+.axial-grid.pointy-top {
+  /* Width: based on x-coordinate span (q + r/2), similar to offset grid */
+  width: calc(
+    var(--col-count) * (var(--hex-width) + var(--gap))
+  );
+  /* Height: first row is full height, subsequent rows add 0.75 spacing */
+  height: calc(
+    var(--hex-size) + (var(--row-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+}
+
+.axial-grid.flat-top {
+  /* Width: first column is full width, subsequent columns add 0.75 spacing */
+  width: calc(
+    var(--hex-size) + (var(--col-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  /* Height: rows are staggered, same as offset grid */
+  height: calc(
+    var(--row-count) * (var(--hex-width) + var(--gap))
+  );
+}

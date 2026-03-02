@@ -1,0 +1,88 @@
+.offset-grid .placed-hex {
+  position: absolute;
+}
+
+/* Pointy-top orientation (odd-r or even-r offset) */
+.offset-grid.pointy-top .placed-hex {
+  /* Calculate parity from --r: mod(r, 2) = r - 2 * round(r / 2) */
+  /* For integers, this gives 0 for even rows, 1 for odd rows */
+  --parity-base: calc(var(--r) - 2 * round(var(--r) / 2));
+  --parity: calc(var(--parity-base) + var(--flip-parity) - 2 * var(--parity-base) * var(--flip-parity));
+  /* When flip-parity is active (even-r), add 1.0 hex-width to compensate for origin row shift */
+  --x-offset: calc(
+    ((var(--q) - var(--x-offset-hexes)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
+      (var(--hex-width) + var(--gap))
+  );
+  --y-offset: calc(
+    (var(--r) - var(--y-offset-hexes)) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+/* Flat-top orientation (odd-r or even-r offset) */
+.offset-grid.flat-top .placed-hex {
+  /* Calculate parity from --q: mod(q, 2) = q - 2 * round(q / 2) */
+  /* For integers, this gives 0 for even columns, 1 for odd columns */
+  --parity-base: calc(var(--q) - 2 * round(var(--q) / 2));
+  --parity: calc(var(--parity-base) + var(--flip-parity) - 2 * var(--parity-base) * var(--flip-parity));
+  --x-offset: calc(
+    (var(--q) - var(--x-offset-hexes)) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  /* When flip-parity is active (even-q), add 1.0 hex-width to compensate for origin column shift */
+  --y-offset: calc(
+    ((var(--r) - var(--y-offset-hexes)) - 0.5 * var(--parity) + 1.0 * var(--flip-parity)) *
+      (var(--hex-width) + var(--gap))
+  );
+
+  top: var(--y-offset);
+  left: var(--x-offset);
+}
+
+.offset-grid {
+  --hex-width: calc(var(--hex-size) / 1.1547);
+  --x-offset-hexes: 0;
+  --y-offset-hexes: 0;
+  --flip-parity: 0;
+}
+
+/* Pointy-top grid dimensions */
+.offset-grid.pointy-top {
+  /* Width: columns are staggered */
+  width: calc(
+    var(--col-count) * (var(--hex-width) + var(--gap))
+  );
+  /* Height: first row is full height, subsequent rows add 0.75 spacing */
+  height: calc(
+    var(--hex-size) + (var(--row-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+}
+
+/* Flat-top grid dimensions */
+.offset-grid.flat-top {
+  /* Width: first column is full width, subsequent columns add 0.75 spacing */
+  width: calc(
+    var(--hex-size) + (var(--col-count) - 1) * (var(--hex-size) * 0.75 + var(--gap))
+  );
+  /* Height: rows are staggered */
+  height: calc(
+    var(--row-count) * (var(--hex-width) + var(--gap))
+  );
+}
+
+.offset-grid.pointy-top.even-r {
+    --flip-parity: 1;
+}
+
+.offset-grid.pointy-top.odd-r {
+    --flip-parity: 0;
+}
+
+.offset-grid.flat-top.even-q {
+    --flip-parity: 1;
+}
+
+.offset-grid.flat-top.odd-q {
+    --flip-parity: 0;
+}

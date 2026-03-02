@@ -1,0 +1,39 @@
+{
+  "name": "@pcvera-puzzles/hexagonal-grids",
+  "version": "0.1.0",
+  "description": "CSS utilities for creating hexagonal grid layouts with support for axial, offset, cube, and doubled coordinate systems",
+  "keywords": [
+    "hexagon",
+    "hexagonal",
+    "grid",
+    "axial",
+    "offset"
+  ],
+  "license": "MIT",
+  "author": "Peter Vera",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./hexagon.css": "./dist/hexagon.css",
+    "./axial-grid.css": "./dist/axial-grid.css",
+    "./offset-grid.css": "./dist/offset-grid.css"
+  },
+  "scripts": {
+    "build": "postcss src/hexagon.css -o dist/hexagon.css && postcss src/axial-grid.css -o dist/axial-grid.css && postcss src/offset-grid.css -o dist/offset-grid.css",
+    "dev": "storybook dev -p 6006 --no-open",
+    "clean": "rm -rf dist",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@pcvera-puzzles/postcss-config": "workspace:*",
+    "postcss": "^8.4.0",
+    "postcss-cli": "^11.0.0",
+    "storybook": "^10.2.8",
+    "@storybook/html-vite": "^10.2.8",
+    "@chromatic-com/storybook": "^5.0.1",
+    "@storybook/addon-a11y": "^10.2.8",
+    "@storybook/addon-docs": "^10.2.8"
+  }
+}
